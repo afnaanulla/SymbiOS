@@ -1,0 +1,153 @@
+---
+const ecosystemItems = [
+  {
+    title: 'SymbiOS Cloud',
+    description: 'Seamlessly sync your experiences, memories, and agents across all your devices with secure cloud storage.',
+    icon: 'cloud'
+  },
+  {
+    title: 'Desktop Dashboard',
+    description: 'Control and manage your entire SymbiOS ecosystem from a powerful web interface.',
+    icon: 'desktop'
+  },
+  {
+    title: 'Mobile Companion',
+    description: 'Take SymbiOS with you everywhere with our full-featured mobile application.',
+    icon: 'mobile'
+  },
+  {
+    title: 'Developer SDK',
+    description: 'Build powerful extensions, agents, and integrations with our comprehensive development tools.',
+    icon: 'code'
+  },
+  {
+    title: 'Marketplace',
+    description: 'Discover and install premium agents, themes, and plugins created by our community.',
+    icon: 'store'
+  },
+  {
+    title: 'Security Center',
+    description: 'Protect your digital life with advanced encryption, privacy controls, and security monitoring.',
+    icon: 'shield'
+  }
+];
+
+const icons = {
+  cloud: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+  </svg>`,
+  desktop: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>`,
+  mobile: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+  </svg>`,
+  code: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+  </svg>`,
+  store: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+  </svg>`,
+  shield: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  </svg>`
+};
+---
+
+<section id="ecosystem" class="py-24 relative">
+  <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-primary-900/20 rounded-full filter blur-3xl -z-10 animate-pulse-slow"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16" data-animate>
+      <h2 class="text-3xl font-bold gradient-text">The SymbiOS Ecosystem</h2>
+      <p class="mt-4 text-lg text-dark-200">
+        SymbiOS extends beyond a single device — discover our comprehensive ecosystem of products and services.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {ecosystemItems.map((item, index) => (
+        <div 
+          class="feature-card glass rounded-xl p-6 border border-dark-800/50 hover:border-primary-800/30 transition-all duration-300"
+          data-animate="fade"
+          data-animate-delay={`${index * 100}`}
+        >
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary-900 to-primary-900 flex items-center justify-center text-white mb-4">
+            <Fragment set:html={icons[item.icon]} />
+          </div>
+          <h3 class="text-xl font-semibold mb-3">{item.title}</h3>
+          <p class="text-dark-300">{item.description}</p>
+          <a href={`#${item.title.toLowerCase().replace(/ /g, '-')}`} class="mt-4 inline-flex items-center text-primary-400 hover:text-primary-300">
+            Learn more
+            <svg class="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Integration Showcase -->
+    <div class="mt-24 glass rounded-xl overflow-hidden border border-dark-800/50" data-animate>
+      <div class="p-8 md:p-10">
+        <div class="md:flex items-center">
+          <div class="md:w-1/2 md:pr-10">
+            <h3 class="text-2xl font-bold mb-4">Seamless Integration</h3>
+            <p class="text-dark-300 mb-6">
+              SymbiOS connects with all your favorite tools, services, and platforms, creating a unified experience across your digital life.
+            </p>
+            
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-8">
+              {['Google', 'Microsoft', 'Apple', 'Slack', 'Notion', 'Figma', 'Dropbox', 'Zoom'].map(partner => (
+                <div class="h-12 rounded-lg bg-dark-900 flex items-center justify-center text-dark-400 text-sm">
+                  {partner}
+                </div>
+              ))}
+            </div>
+            
+            <a 
+              href="#integrations" 
+              class="mt-8 inline-flex items-center px-6 py-2.5 rounded-lg border border-primary-700 text-primary-400 hover:bg-primary-900/20 transition-colors duration-300"
+            >
+              View All Integrations
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="md:w-1/2 mt-8 md:mt-0">
+            <div class="bg-dark-900 rounded-lg p-4 border border-dark-800">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 rounded-lg bg-primary-900 flex items-center justify-center mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-medium">Integration Engine</h4>
+                  <p class="text-dark-400 text-sm">Connect and automate your digital experience</p>
+                </div>
+              </div>
+              
+              <div class="space-y-3 mt-6">
+                <div class="bg-dark-950 rounded-md p-3 flex items-center">
+                  <div class="w-4 h-4 rounded-md bg-green-500 mr-3"></div>
+                  <div class="text-sm">Google Calendar → SymbiOS Notifications</div>
+                </div>
+                <div class="bg-dark-950 rounded-md p-3 flex items-center">
+                  <div class="w-4 h-4 rounded-md bg-blue-500 mr-3"></div>
+                  <div class="text-sm">Slack Messages → Memory Vault</div>
+                </div>
+                <div class="bg-dark-950 rounded-md p-3 flex items-center">
+                  <div class="w-4 h-4 rounded-md bg-purple-500 mr-3"></div>
+                  <div class="text-sm">Notion Updates → Agent Dashboard</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

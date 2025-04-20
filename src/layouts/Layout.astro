@@ -1,0 +1,176 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "SymbiOS - The Future of AI Operating Systems",
+  description = "SymbiOS is an intelligent, adaptive operating system that learns and evolves with you. Experience the future of human-AI symbiosis."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="bg-dark-950 text-white min-h-screen flex flex-col">
+    <div class="fixed inset-0 bg-gradient-radial from-secondary-950/50 via-dark-950 to-dark-950 -z-10"></div>
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+    
+    <script>
+      // Animation for elements with the data-animate attribute
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const animateElements = document.querySelectorAll('[data-animate]');
+        animateElements.forEach(el => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --glow-color: rgba(123, 81, 255, 0.15);
+  }
+  
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Base animation classes */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Animation variations */
+  [data-animate="fade"] {
+    transform: translateY(0);
+  }
+  
+  [data-animate="fade-left"] {
+    transform: translateX(-20px);
+  }
+  
+  [data-animate="fade-right"] {
+    transform: translateX(20px);
+  }
+  
+  [data-animate="zoom"] {
+    transform: scale(0.95);
+  }
+  
+  /* Card hover effects */
+  .feature-card {
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(123, 81, 255, 0.15);
+  }
+
+  /* Glassmorphism effects */
+  .glass {
+    background: rgba(26, 28, 34, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-dark {
+    background: rgba(10, 11, 13, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(90deg, #7d51ff, #3b64ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  
+  /* Glowing elements */
+  .glow {
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+  
+  .glow-border {
+    border: 1px solid rgba(123, 81, 255, 0.3);
+    box-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(26, 28, 34, 0.7);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(123, 81, 255, 0.5);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(123, 81, 255, 0.7);
+  }
+</style>

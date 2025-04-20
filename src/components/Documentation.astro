@@ -1,0 +1,106 @@
+---
+const docSections = [
+  {
+    title: 'Home / Intent Hub',
+    description: 'Learn how to interact with SymbiOS through natural language and access all system functions.',
+    items: [
+      'Natural language UI',
+      'Intent suggestions',
+      'Smart autocomplete',
+      'AI response window',
+      'Quick access notifications'
+    ]
+  },
+  {
+    title: 'Agent Dashboard',
+    description: 'Create, customize, and orchestrate AI assistants for various tasks and domains.',
+    items: [
+      'Agent creation',
+      'Personality customization',
+      'Tool connections',
+      'Multi-agent orchestration',
+      'Task progress monitoring'
+    ]
+  },
+  {
+    title: 'Memory Vault',
+    description: 'Store, search, and manage all your digital interactions with powerful semantic search.',
+    items: [
+      'Automatic memory logs',
+      'Semantic memory search',
+      'Timeline visualization',
+      'Manual memory entries',
+      'Memory pruning controls'
+    ]
+  },
+  {
+    title: 'Advanced Settings',
+    description: 'Personalize every aspect of your SymbiOS experience with detailed configuration options.',
+    items: [
+      'Visual theme selection',
+      'AI behavior tuning',
+      'System integrations',
+      'Privacy controls',
+      'Performance settings'
+    ]
+  }
+];
+---
+
+<section id="docs" class="py-24 bg-dark-950/50 relative">
+  <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-secondary-900/20 rounded-full filter blur-3xl -z-10 animate-pulse-slow"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16" data-animate>
+      <h2 class="text-3xl font-bold gradient-text">Documentation</h2>
+      <p class="mt-4 text-lg text-dark-200">
+        Comprehensive guides and references to help you master SymbiOS and unlock its full potential.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {docSections.map((section, index) => (
+        <div 
+          class="glass rounded-xl overflow-hidden border border-dark-800/50 transition-all duration-300 hover:border-primary-800/30"
+          data-animate={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+        >
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">{section.title}</h3>
+            <p class="text-dark-300 mb-4">{section.description}</p>
+            <ul class="space-y-2">
+              {section.items.map(item => (
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a 
+              href={`#${section.title.toLowerCase().replace(/ /g, '-').replace(/\//g, '-')}`}
+              class="mt-6 inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors"
+            >
+              Read documentation
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center" data-animate>
+      <a 
+        href="#full-docs" 
+        class="inline-flex items-center justify-center px-6 py-3 border border-dark-700 rounded-lg text-white hover:bg-dark-900 transition-colors duration-300"
+      >
+        View Full Documentation
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
